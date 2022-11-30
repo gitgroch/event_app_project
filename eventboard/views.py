@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic import UpdateView
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Comment
 from .forms import CommentForm, PostForm
+
 
 # Create post list view 
 class PostList(generic.ListView):
@@ -16,7 +18,7 @@ class PostList(generic.ListView):
 # Post Detail View 
 class PostDetail(View):
 
-    def get(self, request, slug, *args, **kwargs):
+    def get(self, request, slug,):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.filter(approved=True).order_by("-created_on")
@@ -36,7 +38,7 @@ class PostDetail(View):
             },
         )
     
-    def post(self, request, slug, *args, **kwargs):
+    def post(self, request, slug,):
 
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -83,41 +85,58 @@ class PostLike(View):
 # Post Create View
 class PostCreate(View):
 
-    template_name = "make_post.html"
-    model = Post
+    def get(self, request):
+        """
+        Retrieving the form
+        """
 
-    def get(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        return render(request, "make_post.html", {"post_form": PostForm()})
 
-        return render(
-            request,
-            "make_post.html",
-            {
-                "post": post,
-                "post_form": PostForm()
-            },
-        )
+    def post(self, request):
+        """
+        Posting the event after form completion
+        """
 
-    def post(self, request, slug, *args, **kwargs):
-        queryset = Post.objects.filter(status=1)
-        post = get_object_or_404(queryset, slug=slug)
+        post_form = PostForm(request.POST, request.FILES)
 
-        post_form = PostForm(data=request.POST)
         if post_form.is_valid():
-            post_form.instance.email = request.user.email
-            post_form.instance.name = request.user.username
-            post = post_form.save(commit=False)
-            post.post = post
+            post  = post_form.save(commit=False)
+            post.user = request.user
             post.save()
+            messages.success(request,
+                             'The event has been posted successfully')
+            return redirect('my_garage')
         else:
             post_form = PostForm()
 
-        return render(
-            request,
-            "make_post.html",
-            {
-                "post": post,
-                "post_form": PostForm()
-            },
-        )
+            return render(
+                request, "make_post.html",
+                {
+                    "post_form": post_form
+                },
+            )
+
+    
+    # template_name ='make_post.hmtl'
+    # form_class = PostForm
+
+    # def get(self, request, *args, **kwargs):
+    #     form = self.form_class
+
+    #     return render(
+    #         request,
+    #         "make_post.html",
+    #         {
+    #             "post_form": Postform()
+    #         },
+    #     )
+
+    # def post(self, request, *args, **kwargs):
+    #     form = self.form_class(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return HttpResonseRedirect(reverse('list-view'))
+    #     else:
+    #         return render(request, self.template_name, {'form': form})
+        
+        
