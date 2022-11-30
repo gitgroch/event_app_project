@@ -1,5 +1,9 @@
 body {
-    background-color: #F9FAFC;
+    background-color: #12263A;
+}
+
+h1, h2, h3, p {
+    color: #fff;
 }
 
 .brand {
@@ -18,15 +22,15 @@ body {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: #EBF5EE
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: #598392;
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: #12263A
 }
 
 .card {
