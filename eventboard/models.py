@@ -15,7 +15,7 @@ class Post(models.Model):
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
-    created_on = models.DateTimeField()
+    created_on = models.DateTimeField(auto_now=True)
     status =  models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='event_likes', blank=True)
 
