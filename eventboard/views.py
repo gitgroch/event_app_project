@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 from django.http import HttpResponseRedirect
+from django.template.defaultfilters import slugify
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 
@@ -89,12 +90,12 @@ def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
-            post.instance.email = request.user.email
-            post.instance.name = request.user.username
             post = form.save(commit=False)
+            post.author = request.user
             post.published_date = 'created_on'
+            post.slug= slugify('-'.join([str(post.author), str(post.published_date),]),)             
             post.save()
             return HttpResponseRedirect(reverse('index.html'))
     else:
         form = PostForm()
-    return render(request, 'make_post.html', {'form': form})
+    return render(request, 'home', {'form': form})
