@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 # Create post list view 
 class PostList(generic.ListView):
@@ -10,7 +10,10 @@ class PostList(generic.ListView):
     # Filter post view to published and order by creation date
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = "index.html"
-    paginate_by = 10
+    paginate_by = 8
+
+
+# Post Detail View 
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -64,6 +67,7 @@ class PostDetail(View):
             },
         )
 
+# Post Like View
 class PostLike(View):
 
     def post(self, request, slug):
@@ -75,4 +79,45 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
-        
+
+# Post Create View
+class PostCreate(View):
+
+    template_name = "make_post.html"
+    model = Post
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+
+        return render(
+            request,
+            "make_post.html",
+            {
+                "post": post,
+                "post_form": PostForm()
+            },
+        )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=1)
+        post = get_object_or_404(queryset, slug=slug)
+
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            post_form.instance.email = request.user.email
+            post_form.instance.name = request.user.username
+            post = post_form.save(commit=False)
+            post.post = post
+            post.save()
+        else:
+            post_form = PostForm()
+
+        return render(
+            request,
+            "make_post.html",
+            {
+                "post": post,
+                "post_form": PostForm()
+            },
+        )

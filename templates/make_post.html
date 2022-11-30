@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h3>{% trans "Post an Event" %}</h3>
+
+
+<p>{% blocktrans %}If you have not created an account yet, then please
+<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 mt-3 offset-md-2">
+  <form method="post" style="margin-top: 1.3em;">
+      {{ post_form | crispy }}
+      {{% csrf_token %}}
+      <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+  </form>
+</div>
+</div>
+{% endblock %}
