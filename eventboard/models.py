@@ -27,9 +27,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    # retun number of likes on post 
+    # return number of likes on post 
     def number_of_likes(self):
-        return self.likes.count   
+        return self.likes.count()   
 
 # Create Comment Table 
 class Comment(models.Model):
