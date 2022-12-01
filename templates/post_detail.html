@@ -65,15 +65,15 @@
                             <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                ...
+                                Are you sure you want to delete the post? It will be gone forever!
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <a  type="button" class="btn btn-primary" href="{% url 'delete_post' id=post.id %}" >Delete</a>
                                 </div>
                             </div>
                             </div>
@@ -117,7 +117,26 @@
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                     {% if user.is_authenticated and user.is_staff or user.username == comment.name %}
-                                    <a href="{% url 'delete_comment' id=comment.id %}"><i class="fa-solid fa-trash-can"></i></a>      
+                        <a href="{% url 'delete_comment' id=comment.id %}" data-bs-toggle="modal" data-bs-target="#deleteComment"><i class="fa-solid fa-trash-can"></i></a>
+                        
+                <!-- Modal -->
+                <div class="modal fade" id="deleteComment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        Are you sure you want to delete the comment? It will be gone forever!
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a  type="button" class="btn btn-primary" href="{% url 'delete_comment' id=comment.id %}" >Delete</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
                 <!-- Our for loop ends here -->
                 {% endif %}
                 {% endfor %}
@@ -145,5 +164,7 @@
         </div>
     </div>
 </div>
+
+
 
 {% endblock content %}
