@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from django.views.generic import UpdateView
 from django.http import HttpResponseRedirect
 from django.template.defaultfilters import slugify
+from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 
@@ -118,15 +119,14 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'edit_post.html', {'form': form})
 
-# def post_delete(request, pk):
-#     post = get_object_or_404(Post, pk=pk)
-#     post.delete()
-#     messages.success(request, 'Your post has been deleted')
-#     return render(
-#             request,
-#             "index.html",)
-
+@login_required
 def delete_post(request, id):
     post = Post.objects.filter(id=id)
     post.delete()
+    return redirect('/')
+
+
+def delete_comment(request, id):
+    comment = Comment.objects.filter(id=id)
+    comment.delete()
     return redirect('/')
