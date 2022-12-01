@@ -100,3 +100,20 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'make_post.html', {'form': form})
+
+# Edit Post View 
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = 'created_on'
+            post.status = 1
+            post.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'edit_post.html', {'form': form})
