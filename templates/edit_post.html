@@ -12,7 +12,7 @@
         </td>
         <h3>Edit post</h3>
         <p>Posting as: {{ user.username }}</p>
-        <form method="POST" class="post-form" style="margin-top: 1.3em;">
+        <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-signup btn-lg">Update</button>
