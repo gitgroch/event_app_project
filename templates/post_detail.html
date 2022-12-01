@@ -55,9 +55,11 @@
                         <!-- The number of likes goes before the closing strong tag -->
                         <span class="text-secondary">{{ post.number_of_likes }} </span>
                         <td>
+                            {% if user.is_authenticated and user == post.author %}
                             <a href="{% url 'post_edit' pk=post.pk %}">
                                 <button>Edit</button>
                             </a>
+                            {% endif %}
                         </td>
                         </strong>
                     </div>
