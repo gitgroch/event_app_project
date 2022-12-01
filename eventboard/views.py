@@ -113,7 +113,20 @@ def post_edit(request, pk):
             post.published_date = 'created_on'
             post.status = 1
             post.save()
-            return HttpResponseRedirect(reverse('home'))
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'edit_post.html', {'form': form})
+
+# def post_delete(request, pk):
+#     post = get_object_or_404(Post, pk=pk)
+#     post.delete()
+#     messages.success(request, 'Your post has been deleted')
+#     return render(
+#             request,
+#             "index.html",)
+
+def delete_post(request, id):
+    post = Post.objects.filter(id=id)
+    post.delete()
+    return redirect('/')
