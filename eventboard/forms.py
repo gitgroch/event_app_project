@@ -7,10 +7,6 @@ class CommentForm(forms.ModelForm):
         fields = ('body',)
 
 class PostForm(forms.ModelForm):
-    body = forms.CharField(required=True)
-
     class Meta:
         model = Post
-        fields = ('title', 'event_location', 
-                    'content', 'featured_image',  )
-      
+        fields = ('title', 'event_location', 'content','featured_image', )

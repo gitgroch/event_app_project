@@ -144,3 +144,38 @@ h1, h2, h3, p {
     background: transparent;
     border: none;
 }
+
+
+.post-form-card {
+    margin-top: 2.5rem;
+
+}
+
+.post-form {
+    margin-bottom: 1.5 rem;
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+
+}
+
+.post-form input {
+    display: block;
+    text-align: left;
+    
+}
+
+.post-form input[type="text"] {
+    width: 50%;
+    min-width: 100px;
+    text-align: left;
+    
+
+}
+
+.post-form label {
+    width: 100%;
+    text-align: left;
+
+}
+
