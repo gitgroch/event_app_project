@@ -93,9 +93,10 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = 'created_on'
-            post.slug= slugify('-'.join([str(post.author), str(post.published_date),]),)             
+            post.status = 1
+            post.slug= slugify('-'.join([str(post.author), str(post.title),]),)             
             post.save()
-            return HttpResponseRedirect(reverse('index.html'))
+            return HttpResponseRedirect(reverse('home'))
     else:
         form = PostForm()
-    return render(request, 'home', {'form': form})
+    return render(request, 'make_post.html', {'form': form})
