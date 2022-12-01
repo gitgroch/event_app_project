@@ -13,7 +13,7 @@ class Post(models.Model):
     event_location = models.TextField(max_length=200)
     event_date_and_time = models.DateTimeField(auto_now=True)
     content = models.TextField()
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image')
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now=True)
     status =  models.IntegerField(choices=STATUS, default=0)

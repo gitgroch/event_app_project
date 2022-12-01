@@ -97,8 +97,7 @@
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                     {% if user.is_authenticated and user.is_staff or user.username == comment.name %}
-                                    <a href="{% url 'delete_comment' id=comment.id %}"><i class="fa-solid fa-trash-can"></i></a>
-                                    
+                                    <a href="{% url 'delete_comment' id=comment.id %}"><i class="fa-solid fa-trash-can"></i></a>      
                 <!-- Our for loop ends here -->
                 {% endif %}
                 {% endfor %}
