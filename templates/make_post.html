@@ -26,11 +26,14 @@
     <div class="row gx-lg-5 align-items-center mb-5">
       <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
         <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-          Welcome Back! <br />
-          <span style="color: hsl(218, 81%, 75%)">We missed you!</span>
+          Tell the world about your event  <br />
+          <span style="color: hsl(218, 81%, 75%)">{{ user.username }}.</span>
         </h1>
         <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-        
+        Are you planning your next big event? Let EventBoard get the word out!
+        </p>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+        Include as much detail as you like, but we recommend including the important details first like the time the event kicks off, any cost involved and who might be interested in attending.
         </p>
         
       </div>
@@ -41,7 +44,7 @@
   
         <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <h3>New post</h3>
+            <h3>Your Event</h3>
             <p>Posting as: {{ user.username }}</p>
                 <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
                 {% csrf_token %}

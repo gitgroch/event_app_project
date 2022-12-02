@@ -6,6 +6,19 @@
 <div class="container-fluid">
     <div class="row">
         <!-- Hero Area -->
+
+        {% if user.is_authenticated %}
+        <div class="p-5 text-center rounded-3 h-500"  >
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">Hi {{ user.username }}!</h1>
+                        <h4 class="mb-3">Why not post a little event?</h4>
+                        <a class="btn btn-outline-light btn-lg mb-5 justify-content-center" href="{% url 'post_new' %}" role="button">Get Started</a>
+                </div>
+            </div>
+    </div>
+</div>
+        {% else %}
         <div class="p-5 text-center rounded-3 h-500"  >
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-white">
@@ -16,7 +29,8 @@
             </div>
     </div>
 </div>
-<!-- Hero -->
+{% endif %}
+<!--End Hero -->
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
