@@ -1,4 +1,4 @@
-
+@import '~mdb-ui-kit/css/mdb.min.css';
 
 /* Universal Styling */
 
@@ -41,11 +41,12 @@ h1, h2, h3, p {
 
 .card {
     border: none;
-    background-color: transparent;
+    background-color: #133C55;
 }
 
 .image-container {
     position: relative;
+    background-color: #23BBBB;
 }
 
 .image-flash {
