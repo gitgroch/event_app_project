@@ -1,3 +1,7 @@
+
+
+/* Universal Styling */
+
 body {
     background-color: #12263A;
 }
@@ -7,30 +11,32 @@ h1, h2, h3, p {
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
-}
-
-.red-o {
-    color: #E84610;
+    color: #133C55;
 }
 
 .thin {
     font-weight: 300;
 }
 
+/* Background Colors  */
+
 .light-bg {
-    background-color: #EBF5EE
+    background-color: #F0F7F4
 }
 
 .dark-bg {
-    background-color: #598392;
+    background-color: #133C55;
 }
 
 .main-bg {
     background-color: #12263A
+}
+
+.accent-bg {
+    background-color: #FF7F11;
 }
 
 .card {
@@ -90,6 +96,8 @@ h1, h2, h3, p {
     z-index: 100;
 }
 
+/* Post Styling */
+
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -110,6 +118,14 @@ h1, h2, h3, p {
     color: lightgray;
 }
 
+/* --- Buttons ---  */
+
+.btn-post {
+    margin-left: 1rem;
+}
+
+/* Sign Up Button Styling  */
+
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
@@ -121,6 +137,7 @@ h1, h2, h3, p {
     color: #23BBBB;
 }
 
+/* Link Styling  */
 .link {
     color: #23BBBB;
     text-decoration: none;
@@ -131,6 +148,8 @@ h1, h2, h3, p {
     color: #445261;
     text-decoration: underline;
 }
+
+/* Like Button Styling */
 
 .btn-like {
     color: #E84610;
@@ -145,6 +164,7 @@ h1, h2, h3, p {
     border: none;
 }
 
+/* Post Form Styling */
 
 .post-form-card {
     margin-top: 2.5rem;
