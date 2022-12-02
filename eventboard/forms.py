@@ -22,8 +22,7 @@ class PostForm(forms.ModelForm):
     
     county = forms.CharField(widget=forms.Select(choices=COUNTY_CHOICES))
     
-    event_date_and_time = forms.DateField(widget=forms.SelectDateWidget())
+    event_date_and_time = forms.DateField(widget=forms.SelectDateWidget(),)
     class Meta:
         model = Post
-        fields = ('title', 'event_location', 'content','featured_image', )
-       
+        fields = ('title', 'event_location', 'content','featured_image', 'event_date_and_time' )

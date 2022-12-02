@@ -14,7 +14,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_posts")
     updated_on = models.DateTimeField(auto_now=True)
     event_location = models.TextField(max_length=200)
-    event_date_and_time = models.DateField(blank=True, null=True)
+    event_date_and_time = models.DateField(default="2022-02-02")
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
