@@ -11,7 +11,7 @@ from .models import Post, Comment
 from .forms import CommentForm, PostForm
 
 
-# Create post list view 
+# Create post list view
 class PostList(generic.ListView):
     model = Post
     # Filter post view to published and order by creation date
@@ -20,7 +20,7 @@ class PostList(generic.ListView):
     paginate_by = 8
 
 
-# Post Detail View 
+# Post Detail View
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
@@ -42,7 +42,7 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
-    
+
     def post(self, request, slug,  *args, **kwargs):
 
         queryset = Post.objects.filter(status=1)
@@ -75,6 +75,8 @@ class PostDetail(View):
         )
 
 # Post Like View
+
+
 class PostLike(View):
 
     def post(self, request, slug):
@@ -89,6 +91,7 @@ class PostLike(View):
 
 # Post Create View
 
+
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -97,14 +100,16 @@ def post_new(request):
             post.author = request.user
             post.published_date = 'created_on'
             post.status = 1
-            post.slug= slugify('-'.join([str(post.author), str(post.title),]),)             
+            post.slug = slugify('-'.join([str(post.author),
+                                str(post.title),]),)
             post.save()
             return HttpResponseRedirect(reverse('home'))
     else:
         form = PostForm()
     return render(request, 'make_post.html', {'form': form})
 
-# Edit Post View 
+# Edit Post View
+
 
 def post_edit(request, slug):
     post = get_object_or_404(Post, slug=slug)
@@ -120,6 +125,7 @@ def post_edit(request, slug):
     else:
         form = PostForm(instance=post)
     return render(request, 'edit_post.html', {'form': form})
+
 
 @login_required
 def delete_post(request, id):

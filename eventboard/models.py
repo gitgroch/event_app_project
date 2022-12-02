@@ -4,14 +4,14 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+# Create Post Table
 
 
-
-# Create Post Table 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_posts")
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name="event_posts")
     updated_on = models.DateTimeField(auto_now=True)
     event_location = models.TextField(max_length=200)
     event_date_and_time = models.DateField(default="2022-02-02")
@@ -19,27 +19,31 @@ class Post(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now=True)
-    status =  models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(User, related_name='event_likes', blank=True)
-    category = models.CharField(max_length=200,  blank=True )
+    status = models.IntegerField(choices=STATUS, default=0)
+    likes = models.ManyToManyField(User, related_name='event_likes',
+                                   blank=True)
+    category = models.CharField(max_length=200, blank=True)
     county = models.CharField(max_length=200, blank=True)
 
-    # Add methods to model 
+    # Add methods to model
     class Meta:
-        # order posts by date created 
+        # order posts by date created
         ordering = ['-created_on']
 
     def __str__(self):
         return self.title
 
-    # return number of likes on post 
+    # return number of likes on post
     def number_of_likes(self):
-        return self.likes.count()   
+        return self.likes.count()
 
-# Create Comment Table 
+# Create Comment Table
+
+
 class Comment(models.Model):
 
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+                             related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -51,4 +55,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
