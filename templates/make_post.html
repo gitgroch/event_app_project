@@ -2,21 +2,59 @@
 {% load crispy_forms_tags %}
 
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
-    <div class="col-md-6 mb-4 mt-3">
-        <div class="post-form-card">
+        <div class="col-md-6 mb-4 mt-3">
+            <div class="card bg-glass ">
+                <div class="card-body px-4 py-5 px-md-5">
+                    <h3>New post</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                        <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
+                        {% csrf_token %}
+                        {{ form | crispy }}
+                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+<!-- New Style -->
+
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          Welcome Back! <br />
+          <span style="color: hsl(218, 81%, 75%)">We missed you!</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+        
+        </p>
+        
+      </div>
+  
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+  
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
             <h3>New post</h3>
             <p>Posting as: {{ user.username }}</p>
-            <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
+                <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-            </form>
-            </div>
+                </form>
+          </div>
         </div>
+      </div>
     </div>
-    </div>
+  </div>
+  </section>
+  
 
 
 {% endblock %}

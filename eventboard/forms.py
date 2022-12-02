@@ -1,5 +1,6 @@
 from .models import Comment, Post
 from django import forms
+from crispy_forms.helper import FormHelper
 
 
 COUNTY_CHOICES = [
@@ -18,7 +19,9 @@ class CommentForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
-    category = forms.CharField(widget=forms.Select(choices=CATEGORY_CHOICES))
+    category = forms.CharField(
+        label= "Choose a Category:",
+        widget=forms.Select(choices=CATEGORY_CHOICES))
     
     county = forms.CharField(widget=forms.Select(choices=COUNTY_CHOICES))
     
