@@ -4,6 +4,9 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
+
+
 # Create Post Table 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
@@ -11,13 +14,15 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_posts")
     updated_on = models.DateTimeField(auto_now=True)
     event_location = models.TextField(max_length=200)
-    event_date_and_time = models.DateTimeField(auto_now=True)
+    event_date_and_time = models.DateField(blank=True, null=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now=True)
     status =  models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='event_likes', blank=True)
+    category = models.CharField(max_length=200,  blank=True )
+    county = models.CharField(max_length=200, blank=True)
 
     # Add methods to model 
     class Meta:
