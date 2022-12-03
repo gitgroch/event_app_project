@@ -357,3 +357,8 @@ h1, h2, h3, p {
 .hero-name {
     color: #E84610;
 }
+
+.post-form {
+    font-family: Lato, sans-serif;
+    color: #fff;
+}

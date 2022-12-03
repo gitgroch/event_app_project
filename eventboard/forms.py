@@ -23,7 +23,6 @@ CATEGORY_CHOICES = [
 
 
 class CommentForm(forms.ModelForm):
-    body = label="Leave your comment here!:"
     class Meta:
         model = Comment
         fields = ('body',)
