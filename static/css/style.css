@@ -7,7 +7,10 @@ body {
     background-color: #12263A;
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
     color: #fff;
 }
 
@@ -84,20 +87,8 @@ h1, h2, h3, p {
     position: relative;
     overflow: hidden;
 }
-/* 
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #133C55;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-} */
+
+
 
 /* Post Styling */
 
@@ -191,14 +182,14 @@ h1, h2, h3, p {
 .post-form input {
     display: block;
     text-align: left;
-    
+
 }
 
 .post-form input[type="text"] {
     width: 50%;
     min-width: 100px;
     text-align: left;
-    
+
 
 }
 
@@ -210,87 +201,105 @@ h1, h2, h3, p {
 }
 
 /* Modal Styling */
-.modal-confirm {		
-	color: #636363;
-	width: 400px;
+.modal-confirm {
+    color: #636363;
+    width: 400px;
 }
+
 .modal-confirm .modal-content {
-	padding: 20px;
-	border-radius: 5px;
-	border: none;
-	text-align: center;
-	font-size: 14px;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 14px;
 }
+
 .modal-confirm .modal-header {
-	border-bottom: none;   
-	position: relative;
+    border-bottom: none;
+    position: relative;
 }
+
 .modal-confirm h4 {
-	text-align: center;
-	font-size: 26px;
-	margin: 30px 0 -10px;
+    text-align: center;
+    font-size: 26px;
+    margin: 30px 0 -10px;
 }
+
 .modal-confirm .close {
-	position: absolute;
-	top: -5px;
-	right: -2px;
+    position: absolute;
+    top: -5px;
+    right: -2px;
 }
+
 .modal-confirm .modal-body {
-	color: #999;
+    color: #999;
 }
+
 .modal-confirm .modal-footer {
-	border: none;
-	text-align: center;		
-	border-radius: 5px;
-	font-size: 13px;
-	padding: 10px 15px 25px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px 15px 25px;
 }
+
 .modal-confirm .modal-footer a {
-	color: #999;
-}		
+    color: #999;
+}
+
 .modal-confirm .icon-box {
-	width: 80px;
-	height: 80px;
-	margin: 0 auto;
-	border-radius: 50%;
-	z-index: 9;
-	text-align: center;
-	border: 3px solid #f15e5e;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border-radius: 50%;
+    z-index: 9;
+    text-align: center;
+    border: 3px solid #f15e5e;
 }
+
 .modal-confirm .icon-box i {
-	color: #f15e5e;
-	font-size: 46px;
-	display: inline-block;
-	margin-top: 13px;
+    color: #f15e5e;
+    font-size: 46px;
+    display: inline-block;
+    margin-top: 13px;
 }
-.modal-confirm .btn, .modal-confirm .btn:active {
-	color: #fff;
-	border-radius: 4px;
-	background: #60c7c1;
-	text-decoration: none;
-	transition: all 0.4s;
-	line-height: normal;
-	min-width: 120px;
-	border: none;
-	min-height: 40px;
-	border-radius: 3px;
-	margin: 0 5px;
+
+.modal-confirm .btn,
+.modal-confirm .btn:active {
+    color: #fff;
+    border-radius: 4px;
+    background: #60c7c1;
+    text-decoration: none;
+    transition: all 0.4s;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
 }
+
 .modal-confirm .btn-secondary {
-	background: #c1c1c1;
+    background: #c1c1c1;
 }
-.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
-	background: #a8a8a8;
+
+.modal-confirm .btn-secondary:hover,
+.modal-confirm .btn-secondary:focus {
+    background: #a8a8a8;
 }
+
 .modal-confirm .btn-danger {
-	background: #f15e5e;
+    background: #f15e5e;
 }
-.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
-	background: #ee3535;
+
+.modal-confirm .btn-danger:hover,
+.modal-confirm .btn-danger:focus {
+    background: #ee3535;
 }
+
 .trigger-btn {
-	display: inline-block;
-	margin: 100px auto;
+    display: inline-block;
+    margin: 100px auto;
 }
 
 /* Signup Page Style */
@@ -298,43 +307,43 @@ h1, h2, h3, p {
 
 
 .background-radial-gradient {
-  background-color: hsl(218, 41%, 15%);
-  background-image: radial-gradient(650px circle at 0% 0%,
-      hsl(218, 41%, 35%) 15%,
-      hsl(218, 41%, 30%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%,
-      transparent 100%),
-    radial-gradient(1250px circle at 100% 100%,
-      hsl(218, 41%, 45%) 15%,
-      hsl(218, 41%, 30%) 35%,
-      hsl(218, 41%, 20%) 75%,
-      hsl(218, 41%, 19%) 80%,
-      transparent 100%);
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%);
 }
 
 #radius-shape-1 {
-  height: 220px;
-  width: 220px;
-  top: -60px;
-  left: -130px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
+    height: 220px;
+    width: 220px;
+    top: -60px;
+    left: -130px;
+    background: radial-gradient(#44006b, #ad1fff);
+    overflow: hidden;
 }
 
 #radius-shape-2 {
-  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-  bottom: -60px;
-  right: -110px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
+    border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+    bottom: -60px;
+    right: -110px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(#44006b, #ad1fff);
+    overflow: hidden;
 }
 
 .bg-glass {
-  background-color: hsla(258, 87%, 58%, 0.9) !important;
-  backdrop-filter: saturate(200%) blur(25px);
+    background-color: hsla(258, 87%, 58%, 0.9) !important;
+    backdrop-filter: saturate(200%) blur(25px);
 }
 
 .account-card {

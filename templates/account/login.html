@@ -9,8 +9,6 @@
 
 {% load crispy_forms_tags %}
 
-
-
 <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
   <div class="row gx-lg-5 align-items-center mb-5">
     <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
@@ -19,19 +17,16 @@
         <span style="color: hsl(218, 81%, 75%)">We missed you!</span>
       </h1>
       <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-      
       </p>
       <p>{% blocktrans %}Don't have an account? No problem, you can go ahead and
         <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
     </div>
-
     <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
       <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
       <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
       <div class="card bg-glass">
         <div class="card-body px-4 py-5 px-md-5">
-          <form class="login" method="POST" action="{% url 'account_login' %}">
+          <form class="login post-form" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
             {{ form | crispy }}
             {% if redirect_field_value %}
