@@ -8,19 +8,24 @@ STATUS = ((0, "Draft"), (1, "Published"))
 COUNTY_CHOICES = [
                 ('Carlow', 'Carlow'), ('Cavan', 'Cavan'), ('Clare', 'Clare'),
                 ('Cork', 'Cork'), ('Donegal', 'Donegal'), ('Dublin', 'Dublin'),
-                ('Galway', 'Galway'), ('Kerry', 'Kerry'), ('Kildare', 'Kildare'),
-                ('Kilkenny', 'Kilkenny'), ('Laois', 'Laois'), ('Leitrim', 'Leitrim'),
-                ('Limerick', 'Limerick'), ('Longford', 'Longford'), ('Louth', 'Louth'),
+                ('Galway', 'Galway'), ('Kerry', 'Kerry'),
+                ('Kildare', 'Kildare'),
+                ('Kilkenny', 'Kilkenny'), ('Laois', 'Laois'),
+                ('Leitrim', 'Leitrim'), ('Limerick', 'Limerick'),
+                ('Longford', 'Longford'), ('Louth', 'Louth'),
                 ('Mayo', 'Mayo'), ('Meath', 'Meath'), ('Monaghan', 'Monaghan'),
-                ('Offaly', 'Offaly'), ('Roscommon', 'Roscommon'), ('Sligo', 'Sligo'),
-                ('Tipperary', 'Tipperary'), ('Waterford', 'Waterford'), ('Westmeath', 'Westmeath'),
+                ('Offaly', 'Offaly'), ('Roscommon', 'Roscommon'),
+                ('Sligo', 'Sligo'), ('Tipperary', 'Tipperary'),
+                ('Waterford', 'Waterford'), ('Westmeath', 'Westmeath'),
                 ('Wexford', 'Wexford'), ('Wicklow', 'Wicklow'),
                  ]
 
 CATEGORY_CHOICES = [
-                    ('Sport', 'Sport'), ('Business', 'Business'), ('Family', 'Family'),
-                    ('Hobby', 'Hobby'), ('Holiday', 'Holiday'), ('Outdoors', 'Outdoors'),
-                    ('Music', 'Music'), ('Festival', 'Festival'), ('Culture', 'Culture')
+                    ('Sport', 'Sport'), ('Business', 'Business'),
+                    ('Family', 'Family'), ('Hobby', 'Hobby'),
+                    ('Holiday', 'Holiday'), ('Outdoors', 'Outdoors'),
+                    ('Music', 'Music'), ('Festival', 'Festival'),
+                    ('Culture', 'Culture')
 ]
 
 
@@ -42,12 +47,14 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='event_likes',
                                    blank=True)
-    category = models.CharField(max_length=200, choices=CATEGORY_CHOICES, blank=True)
-    county = models.CharField(max_length=200, choices=COUNTY_CHOICES, blank=True)
-    contact_phone = models.CharField(max_length=12,blank=True)
+    category = models.CharField(max_length=200,
+                                choices=CATEGORY_CHOICES, blank=True)
+    county = models.CharField(max_length=200,
+                              choices=COUNTY_CHOICES, blank=True)
+    contact_phone = models.CharField(max_length=12, blank=True)
     contact_email = models.CharField(max_length=254, blank=True)
-    contact_website = models.CharField(max_length=200,blank=True)
-    contact_address = models.TextField(max_length=500,blank=True)
+    contact_website = models.CharField(max_length=200, blank=True)
+    contact_address = models.TextField(max_length=500, blank=True)
 
     # Add methods to model
     class Meta:
