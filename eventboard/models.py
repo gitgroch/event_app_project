@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+# List for availabl choices for form Choice Fields
 COUNTY_CHOICES = [
                 ('Carlow', 'Carlow'), ('Cavan', 'Cavan'), ('Clare', 'Clare'),
                 ('Cork', 'Cork'), ('Donegal', 'Donegal'), ('Dublin', 'Dublin'),
