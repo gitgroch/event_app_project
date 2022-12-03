@@ -61,12 +61,10 @@
                             <span class="text-secondary">{{ post.number_of_likes }} </span>
                             <td>
                                 {% if user.is_authenticated and user.is_staff or user == post.author %}
-                                <a href="{% url 'post_edit' slug=post.slug %}">
-                                    <a type="button" class="btn btn-outline-success mt-2">Edit</a>
+                                    <a type="button" class="btn btn-outline-success mt-2" href="{% url 'post_edit' slug=post.slug %}">Edit</a>
                                     <a type="button" class="btn btn-outline-danger mt-2"
                                         href="{% url 'delete_post' id=post.id %}" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">Delete</a>
-
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">

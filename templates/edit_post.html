@@ -1,27 +1,47 @@
 {% extends 'base.html' %} {% block content %}
+{% load crispy_forms_tags %}
 
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+            <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                Look at you! You're editing,<br />
+                <span style="color: hsl(218, 81%, 75%)">{{ user.username }}!</span>
+            </h1>
+            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                Are you planning your next big event? Let EventBoard get the word out!
+            </p>
+            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                Include as much detail as you like, but we recommend including the important details first like the time
+                the
+                event kicks off, any cost involved and who might be interested in attending.
+            </p>
+            <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                Be sure to familiarise yourself with the posting rules <a href="{% url 'post_rules' %}">here</a>.
+            </p>
 
-<div class="container">
-<div class="row">
-<div class="col-md-6 mb-4 mt-3">
-    <div class="post-form-card">
-        <td>
-            <a href="/edit/ {{item.id}}">
-                <button>Edit</button>
-            </a>
-        </td>
-        <h3>Edit post</h3>
-        <p>Posting as: {{ user.username }}</p>
-        <form method="POST" enctype="multipart/form-data" class="post-form" style="margin-top: 1.3em;">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-signup btn-lg">Update</button>
-        </form>
+        </div>
+
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+            <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+                    <h3 class="post-form">Your Event</h3>
+                    <p class="post-form">Posting as: {{ user.username }}</p>
+                    <form method="POST" class="post-form" enctype="multipart/form-data" class="post-form"
+                        style="margin-top: 1.3em;">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-   
+</section>
 
 
 {% endblock %}
