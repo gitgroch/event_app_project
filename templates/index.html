@@ -31,8 +31,6 @@
 </div>
 {% endif %}
 <!--End Hero -->
-
-
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row gx-lg-5">
@@ -42,6 +40,7 @@
                 <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
                     <div class="card mb-4">
                         <div class="card-body">
+                            <a href="{% url 'post_detail' post.slug %}" >
                             <div class="image-container">
                                 <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                                             data-mdb-ripple-color="light">
@@ -52,11 +51,11 @@
                                 <img class="card-img-top img-thumbnai" src=" {{ post.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                    
                                 </div>
                                     <p class="author">Posted By: {{ post.author }}</p>
                                 </div>
                             </div>
+                            </a>
                             <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <p class="card-text">{{ post.excerpt }}</p>
