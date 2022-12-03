@@ -99,7 +99,7 @@ def post_new(request):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = 'created_on'
-            post.status = 0
+            post.status = 1
             post.slug = slugify('-'.join([str(post.author),
                                 str(post.title),]),)
             post.save()
@@ -120,7 +120,7 @@ def post_edit(request, slug):
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = 'created_on'
-            post.status = 0
+            post.status = 1
             post.save()
             return redirect('post_detail', slug=post.slug)
     else:

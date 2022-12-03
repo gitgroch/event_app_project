@@ -4,6 +4,25 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+COUNTY_CHOICES = [
+                ('Carlow', 'Carlow'), ('Cavan', 'Cavan'), ('Clare', 'Clare'),
+                ('Cork', 'Cork'), ('Donegal', 'Donegal'), ('Dublin', 'Dublin'),
+                ('Galway', 'Galway'), ('Kerry', 'Kerry'), ('Kildare', 'Kildare'),
+                ('Kilkenny', 'Kilkenny'), ('Laois', 'Laois'), ('Leitrim', 'Leitrim'),
+                ('Limerick', 'Limerick'), ('Longford', 'Longford'), ('Louth', 'Louth'),
+                ('Mayo', 'Mayo'), ('Meath', 'Meath'), ('Monaghan', 'Monaghan'),
+                ('Offaly', 'Offaly'), ('Roscommon', 'Roscommon'), ('Sligo', 'Sligo'),
+                ('Tipperary', 'Tipperary'), ('Waterford', 'Waterford'), ('Westmeath', 'Westmeath'),
+                ('Wexford', 'Wexford'), ('Wicklow', 'Wicklow'),
+                 ]
+
+CATEGORY_CHOICES = [
+                    ('Sport', 'Sport'), ('Business', 'Business'), ('Family', 'Family'),
+                    ('Hobby', 'Hobby'), ('Holiday', 'Holiday'), ('Outdoors', 'Outdoors'),
+                    ('Music', 'Music'), ('Festival', 'Festival'), ('Culture', 'Culture')
+]
+
+
 # Create Post Table
 
 
@@ -14,7 +33,7 @@ class Post(models.Model):
                                related_name="event_posts")
     updated_on = models.DateTimeField(auto_now=True)
     event_location = models.TextField(max_length=200)
-    event_date_and_time = models.DateField(default="2022-02-02")
+    event_date_and_time = models.DateField(null=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -22,8 +41,8 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     likes = models.ManyToManyField(User, related_name='event_likes',
                                    blank=True)
-    category = models.CharField(max_length=200, blank=True)
-    county = models.CharField(max_length=200, blank=True)
+    category = models.CharField(max_length=200, choices=CATEGORY_CHOICES, blank=True)
+    county = models.CharField(max_length=200, choices=COUNTY_CHOICES, blank=True)
 
     # Add methods to model
     class Meta:

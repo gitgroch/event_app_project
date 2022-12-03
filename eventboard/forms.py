@@ -30,15 +30,15 @@ class CommentForm(forms.ModelForm):
 
 
 class PostForm(forms.ModelForm):
-    category = forms.CharField(
-        label="Choose a Category:",
-        widget=forms.Select(choices=CATEGORY_CHOICES))
-    county = forms.CharField(
-        label="Choose a County:",
-        widget=forms.Select(choices=COUNTY_CHOICES))
+    # category = forms.CharField(
+    #     label="Choose a Category:",
+    #     widget=forms.Select(choices=CATEGORY_CHOICES))
+    # county = forms.CharField(
+    #     label="Choose a County:",
+    #     widget=forms.Select(choices=COUNTY_CHOICES))
     event_date_and_time = forms.DateField(widget=forms.SelectDateWidget(),)
 
     class Meta:
         model = Post
         fields = ('title', 'event_location', 'content',
-                  'featured_image', 'event_date_and_time')
+                  'featured_image', 'event_date_and_time', 'category', 'county',)
