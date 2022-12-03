@@ -1,0 +1,43 @@
+{% extends 'base.html' %} 
+{% block content %}
+
+
+
+<div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+            <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+                So you want to post your event, huh?<br />
+                <span style="color: hsl(218, 81%, 75%)">Great!</span>
+                </p>
+        </div>
+        <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+            <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+            <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+            <div class="card bg-glass">
+                <div class="card-body px-4 py-5 px-md-5">
+                    <h3>Just a few rules to follow!</h3>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        1. Please keep your event posts free from material not considered safe for work.
+                    </p>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        2. All events posted should include as much detail as possible including at least one form of
+                        contact method.
+                    </p>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        3. Please ensure to update your event if something changes, a venue or date change for example.
+                    </p>
+                    <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                        4. While comments are moderated, EventBoard takes no responsibility for comments on your event
+                        post.
+                </div>
+                <a class="btn btn-primary" href="{% url 'home' %}"><strong>Home</strong></a>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    {% endblock %}

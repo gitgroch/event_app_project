@@ -76,7 +76,7 @@ h1, h2, h3, p {
 }
 
 .masthead-text {
-    background-color: #445261;
+    background-color: #133C55;
     color: white;
     position: relative;
 }
@@ -85,7 +85,7 @@ h1, h2, h3, p {
     position: relative;
     overflow: hidden;
 }
-
+/* 
 .masthead-image:after {
     content: "";
     position: absolute;
@@ -93,12 +93,12 @@ h1, h2, h3, p {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: #133C55;
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
-}
+} */
 
 /* Post Styling */
 
@@ -121,6 +121,12 @@ h1, h2, h3, p {
     margin-left: 5%;
     color: lightgray;
 }
+
+.post-subtitle-2 {
+    margin-left: 5%;
+    color: lightgray;
+}
+
 
 /* --- Buttons ---  */
 
@@ -339,6 +345,13 @@ h1, h2, h3, p {
 
 .card-text {
     font-family: Lato, sans-serif;
+}
+
+.post-card-text {
+    font-family: Lato, sans-serif;
+    margin-left: 5%;
+    color: lightgray;
+
 }
 
 .hero-name {

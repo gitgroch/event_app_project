@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+
 STATUS = ((0, "Draft"), (1, "Published"))
 
 COUNTY_CHOICES = [
@@ -43,6 +44,10 @@ class Post(models.Model):
                                    blank=True)
     category = models.CharField(max_length=200, choices=CATEGORY_CHOICES, blank=True)
     county = models.CharField(max_length=200, choices=COUNTY_CHOICES, blank=True)
+    contact_phone = models.CharField(max_length=12,blank=True)
+    contact_email = models.EmailField(max_length=254, blank=True)
+    contact_website = models.CharField(max_length=200,blank=True)
+    contact_address = models.TextField(max_length=500,blank=True)
 
     # Add methods to model
     class Meta:

@@ -139,3 +139,6 @@ def delete_comment(request, id):
     comment = Comment.objects.filter(id=id)
     comment.delete()
     return redirect('/')
+
+def post_rules(request):
+    return render(request, 'post_rules.html')
