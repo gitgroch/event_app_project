@@ -45,7 +45,7 @@ class Post(models.Model):
     category = models.CharField(max_length=200, choices=CATEGORY_CHOICES, blank=True)
     county = models.CharField(max_length=200, choices=COUNTY_CHOICES, blank=True)
     contact_phone = models.CharField(max_length=12,blank=True)
-    contact_email = models.EmailField(max_length=254, blank=True)
+    contact_email = models.CharField(max_length=254, blank=True)
     contact_website = models.CharField(max_length=200,blank=True)
     contact_address = models.TextField(max_length=500,blank=True)
 

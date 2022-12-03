@@ -14,7 +14,8 @@
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
                 {% if "placeholder" in post.featured_image.url %}
-                <img src="" width="100%">
+                <img src="https://res.cloudinary.com/dygguhgfd/image/upload/v1670090351/p5ujzmxkdskfb9pvrvay.jpg"
+                    width="100%">
                 {% else %}
                 <img src=" {{ post.featured_image.url }}" width="100%">
                 {% endif %}
@@ -32,6 +33,13 @@
                 <p class="post-card-text">
                     {{ post.content | safe }}
                 </p>
+                <br>
+                <h3 class="post-subtitle">Contact:</h3>
+                <p class="post-subtitle"><i class="fas fa-phone"></i> {{ post.contact_phone }}</p>
+                <p class="post-subtitle"><i class="far fa-envelope"></i> {{ post.contact_email }}</p>
+                <p class="post-subtitle"><i class="fas fa-globe"></i> <a href="{{ post.contact_website }}">
+                        {{ post.contact_website }} </a></p>
+                <p class="post-subtitle">{{post.contact_address}}</p>
                 <div class="row">
                     <div class="col-1">
                         <strong>
@@ -39,43 +47,52 @@
                             <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
                                 {% csrf_token %}
                                 {% if liked %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                                        class="fas fa-heart"></i></button>
                                 {% else %}
-                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                <button type="submit" name="blogpost_id" value="{{post.slug}}" class="btn-like"><i
+                                        class="far fa-heart"></i></button>
                                 {% endif %}
                             </form>
                             {% else %}
                             <span class="text-secondary"><i class="far fa-heart"></i></span>
                             {% endif %}
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <span class="text-secondary">{{ post.number_of_likes }} </span>
-                        <td>
-                            {% if user.is_authenticated and user.is_staff or user == post.author %}
-                            <a href="{% url 'post_edit' slug=post.slug %}">
-                                <button>Edit</button>
-                            <a type="button" class="btn btn-outline-danger" href="{% url 'delete_post' id=post.id %}"  data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</a>
+                            <!-- The number of likes goes before the closing strong tag -->
+                            <span class="text-secondary">{{ post.number_of_likes }} </span>
+                            <td>
+                                {% if user.is_authenticated and user.is_staff or user == post.author %}
+                                <a href="{% url 'post_edit' slug=post.slug %}">
+                                    <a type="button" class="btn btn-outline-success mt-2">Edit</a>
+                                    <a type="button" class="btn btn-outline-danger mt-2"
+                                        href="{% url 'delete_post' id=post.id %}" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">Delete</a>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                Are you sure you want to delete the post? It will be gone forever!
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a  type="button" class="btn btn-primary" href="{% url 'delete_post' id=post.id %}" >Delete</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to delete the post? It will be gone forever!
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <a type="button" class="btn btn-primary"
+                                                        href="{% url 'delete_post' id=post.id %}">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                            {% endif %}
-                        </td>
+                                    {% endif %}
+                            </td>
                         </strong>
                     </div>
                     <div class="col-1">
@@ -90,13 +107,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
+            <h3 class="post-subtitle mt-3">Comments:</h3>
             <div class="card-body">
                 <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
@@ -112,54 +124,57 @@
                     <!-- The body of the comment goes before the | -->
                     {{ comment.body | linebreaks }}
                     {% if user.is_authenticated and user.is_staff or user.username == comment.name %}
-                        <a href="{% url 'delete_comment' id=comment.id %}" data-bs-toggle="modal" data-bs-target="#deleteComment"><i class="fa-solid fa-trash-can"></i></a>
-                        
-                <!-- Modal -->
-                <div class="modal fade" id="deleteComment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                        Are you sure you want to delete the comment? It will be gone forever!
-                        </div>
-                        <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a  type="button" class="btn btn-primary" href="{% url 'delete_comment' id=comment.id %}" >Delete</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- Our for loop ends here -->
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
-                {% if user.is_authenticated %}
-                <h3>Leave a Comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
-                <form method="POST" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %} 
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
-                {% endif %}
-                {% endif %}
+                    <a href="{% url 'delete_comment' id=comment.id %}" data-bs-toggle="modal"
+                        data-bs-target="#deleteComment"><i class="fa-solid fa-trash-can"></i></a>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteComment" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm Post Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete the comment? It will be gone forever!
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <a type="button" class="btn btn-primary"
+                                        href="{% url 'delete_comment' id=comment.id %}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Our for loop ends here -->
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4 card mb-4 mt-3  ">
+                <div class="card-body post-subtitle ml-2">
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting approval
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+                    <h3 class="post-subtitle">Leave a Comment:</h3>
+                    <p class="post-subtitle">Posting as: {{ user.username }}</p>
+                    <form method="POST" style="margin-top: 1.3em;">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-signup btn-lg mt-3">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-
-{% endblock content %}
+    {% endblock content %}
