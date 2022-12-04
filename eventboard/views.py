@@ -112,10 +112,10 @@ def post_new(request):
 # Edit Post View
 
 
-def post_edit(request, slug):
+def post_edit(request, slug, ):
     post = get_object_or_404(Post, slug=slug)
     if request.method == "POST":
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
